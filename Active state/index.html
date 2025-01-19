@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active State</title>
+    <style>
+        body {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .boxes {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+        }
+
+        .active {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boxes" id="box1"></div>
+    <div class="boxes" id="box2"></div>
+    <div class="boxes" id="box3"></div>
+    <div class="boxes" id="box4"></div>
+
+    <script>
+        let boxes = Array.from(document.querySelectorAll(".boxes"));
+        boxes.forEach((box) => {
+            box.addEventListener("click", (event) => {
+                boxes.forEach((item) => {
+                    item.classList.remove("active")
+                    item.style.backgroundColor = "";
+                    console.log(event);
+                });
+                box.classList.add("active");
+                document.querySelector(".active").style.backgroundColor = "orange";
+            })
+        });
+    </script>
+</body>
+
+</html>
